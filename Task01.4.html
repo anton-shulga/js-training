@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Task01.4</title>
+  <meta name="author" content="Anton Shulga">
+</head>
+
+<body>
+	<script type="text/javascript">
+		const WEEK_DAY_NAMES = [
+			"Воскресенье",
+			"Понедельник",
+			"Вторник",
+			"Среда",
+			"Четверг",
+			"Пятница",
+			"Суббота"
+		];
+		const MAX_MONTH = 12;
+		const MAX_DAY_OF_MONTH = 31;
+		const MIN_NUMBER = 1;
+
+		var month = parseInt(prompt("Месяц:", "0"));
+		if (!isNumberInInterval(month, MIN_NUMBER, MAX_MONTH)) {
+			throw "Месяц: не целое число в интервале " + MIN_NUMBER + " - " + MAX_MONTH;
+		}
+
+		var dayOfMonth = parseInt(prompt("День месяца:", "0"));
+		if (!isNumberInInterval(dayOfMonth, MIN_NUMBER, MAX_DAY_OF_MONTH)) {
+			throw "Месяц: не целое число в интервале " + MIN_NUMBER + " - " + MAX_DAY_OF_MONTH;
+		}
+
+		var currentYear = new Date().getFullYear();
+		var selectedDate = new Date(currentYear, month - 1, dayOfMonth)
+
+		alert(WEEK_DAY_NAMES[selectedDate.getDay()]);
+
+		function isNumberInInterval(value, start, end) {
+			return value >= start && value <= end;
+		}
+	</script>
+</body>
+</html>

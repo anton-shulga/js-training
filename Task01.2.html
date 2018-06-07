@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Task01.2</title>
+  <meta name="author" content="Anton Shulga">
+</head>
+
+<body>
+	<script type="text/javascript">
+		const MAX_FLOOR_NUMBER = 25;
+		const MAX_FLATS_PER_STAIRSCASE_NUMBER = 20;
+		const MAX_ENTRANCE_NUMBER = 10;
+		const MIN_NUMBER = 1;
+
+
+		var floorsNumber = parseInt(prompt("Этажность", "0"));
+		if (isNaN(floorsNumber)) {
+			throw "Этажность: не целое число";
+		}
+		if (!isNumberInInterval(floorsNumber, MIN_NUMBER, MAX_FLOOR_NUMBER)) {
+			throw "Этажность: не целое число в интервале " + MIN_NUMBER + " - " + MAX_FLOOR_NUMBER;
+		}
+
+		var entrancesNumber = parseInt(prompt("Количество подъездов", "0"));
+		if (isNaN(entrancesNumber)) {
+			throw "Количество подъездов: не целое число";
+		}
+		if (!isNumberInInterval(floorsNumber, MIN_NUMBER, MAX_ENTRANCE_NUMBER)) {
+			throw "Количество подъездов: не целое число в интервале " + MIN_NUMBER + " - " + MAX_ENTRANCE_NUMBER;
+		}
+
+		var flatsPerStrairscase = parseInt(prompt("Количество квартир на лестничной площадке", "0"));
+		if (isNaN(flatsPerStrairscase)) {
+			throw "Количество квартир на лестничной площадке: не целое число";
+		}
+		if (!isNumberInInterval(flatsPerStrairscase, MIN_NUMBER, MAX_FLATS_PER_STAIRSCASE_NUMBER)) {
+			throw "Количество квартир на лестничной площадке: не целое число в интервале " + MIN_NUMBER + " - " + MAX_FLOOR_NUMAX_FLATS_PER_STAIRSCASE_NUMBERMBER;
+		}
+
+		var flatNumber = parseInt(prompt("Номер квартиры", "0"));
+		if (isNaN(flatNumber)) {
+			throw "Номер квартиры: не целое число";
+		}
+		var maxFlatsNumber = flatsPerStrairscase * floorsNumber * entrancesNumber;
+		if (!isNumberInInterval(flatNumber, MIN_NUMBER, maxFlatsNumber)) {
+			throw "Номер квартиры: не целое число в интервале " + MIN_NUMBER + " - " + maxFlatsNumber;
+		}
+
+		var result;
+		var flatsPerEntrance = floorsNumber * flatsPerStrairscase;
+
+		result = Math.ceil(flatNumber / flatsPerEntrance);
+
+		alert(result);
+
+		function isNumberInInterval(value, start, end) {
+			return value >= start && value <= end;
+		}
+	</script>
+</body>
+</html>

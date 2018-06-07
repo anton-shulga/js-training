@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Task01.3</title>
+  <meta name="author" content="Anton Shulga">
+</head>
+
+<body>
+	<script type="text/javascript">
+		var number = parseInt(prompt("Элемент", "0"));
+		if (isNaN(number)) {
+			throw "Элемент: не целое число";
+		}
+
+		if (number < 0) {
+			throw "Элемент: отрицательное число";
+		}
+
+		alert(nonRecursiveFibonacci(number));
+		alert(recursiveFibonacci(number));
+
+
+		function recursiveFibonacci(number) {
+			if (number == 0) {
+				return 0;
+			}
+
+			if (number == 1) {
+				return 1;
+			}
+
+			return recursiveFibonacci(number - 1) + recursiveFibonacci(number - 2);
+		}
+
+		function nonRecursiveFibonacci(number) {
+			if (number == 1) {
+				return 1;
+			}
+
+			if (number == 2) {
+				return 1;
+			}
+
+			var firstElement = 1;
+			var lastElement = 1;
+			var sum = 0;
+
+			for (var i = 2; i < number; i++) {
+				sum = firstElement + lastElement;
+				firstElement = lastElement;
+				lastElement = sum;
+			}			
+
+			return sum;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Task01.1</title>
+  <meta name="author" content="Anton Shulga">
+</head>
+
+<body>
+	<script type="text/javascript">
+		while(true) {
+			var firstNumber = prompt("Первое число", "0");
+
+			if (isNaN(firstNumber)) {
+				alert("Первый ввод не число");
+				break;
+			}
+
+			var secondNumber = prompt("Второе число", "0");
+
+			if (isNaN(secondNumber)) {
+				alert("Второй ввод не число");
+				break;
+			}
+
+			var resultMessage;
+
+			if (firstNumber === secondNumber) {
+				resultMessage = "Числа равны";
+			} else if (firstNumber > secondNumber) {
+				resultMessage = "Первое больше второго";
+			} else {
+				resultMessage = "Второе больше первого";
+			}
+
+			alert(resultMessage);
+		}
+	</script>
+</body>
+</html>
