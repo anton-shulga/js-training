@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Task01.5</title>
+  <meta name="author" content="Anton Shulga">
+</head>
+
+<body>
+	<script type="text/javascript">
+		var average;
+		var devitation;
+		var max;
+		var min;
+		var inputString = prompt("Numbers:", "");
+		inputString = inputString.replace(",", ".");
+		var splittedValues = inputString.split(" ");
+		splittedValues = toNumbersArray(splittedValues);
+
+		sortNumbersArray(splittedValues);
+
+		max = splittedValues[splittedValues.length - 1];
+		min = splittedValues[0];
+		average = getAverage(splittedValues);
+		devitation = getDevitation(splittedValues);
+
+		alert(min);
+		alert(max);
+		alert(average);
+		alert(devitation);
+
+		function toNumbersArray(stringsArray) {
+			var i = 0;
+			var arrayLength = stringsArray.length;
+			var numbersArray = [];
+
+			for (i = 0; i < arrayLength; i++) {
+				var parsedNumber = parseInt(stringsArray[i]);
+				if (!isNaN(parsedNumber)){
+					numbersArray.push(parsedNumber);
+				}
+			}
+
+			return numbersArray;
+		}
+
+		function getAverage(numbersArray) {
+			var i;
+			var arrayLength = numbersArray.length;
+			var sum = 0;
+			for(i = 0; i < arrayLength; i++) {
+				sum += numbersArray[i];
+			}
+
+			return sum / arrayLength;
+		}
+
+		function sortNumbersArray(numbersArray) {
+			var length = numbersArray.length;
+			var i;
+			var j;
+
+			for (i = length - 1; i >= 0; i--) {
+				for (j = (length - i); j > 0; j--) {
+					if (numbersArray[j] < numbersArray[j - 1]) {
+						var tmp = numbersArray[j];
+						numbersArray[j] = numbersArray[j - 1];
+						numbersArray[j - 1] = tmp;
+					}
+				}
+			}
+		}
+
+		function getDevitation(numbersArray) {
+			var average = getAverage(numbersArray);
+
+			var i;
+			var arrayLength = numbersArray.length;
+			var sum = 0;
+			for(i = 0; i < arrayLength; i++) {
+				sum += (numbersArray[i] - average) ** 2;
+			}
+
+			return (sum / arrayLength) ** 0.5;
+		}
+
+	</script>
+</body>
+</html>
